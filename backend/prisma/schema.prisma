@@ -1,0 +1,237 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  id               Int       @id @default(autoincrement())
+  name             String
+  email            String    @unique
+  password         String
+  role             String
+  studentId        String?
+  isVerified       Boolean   @default(false)
+  resetToken       String?   @unique
+  resetTokenExpiry DateTime?
+  createdAt        DateTime  @default(now())
+  updatedAt        DateTime  @updatedAt
+  avatarUrl        String?
+
+  verificationTokens  VerificationToken[]
+  passwordResetTokens PasswordResetToken[]
+
+  roomsCreated Room[] @relation("RoomsCreatedByUser")
+
+  joinedRooms JoinedRoom[]
+
+  supervisedRooms SupervisedRoom[]
+  onlineStatus    OnlineStatus?
+
+  bubblesAsStudent    Bubble[]  @relation("BubbleStudents")
+  bubblesAsSupervisor Bubble[]  @relation("BubbleSupervisors")
+  messagesSent        Message[] @relation("UserMessages")
+
+  accessRequests AccessRequest[] @relation("UserAccessRequests")
+  createdFiles   File[]          @relation("CreatorFiles")
+
+  createdFolders  Folder[]  @relation("UserCreatedFolders")
+  activityLogs ActivityLog[]
+
+}
+
+model VerificationToken {
+  id        Int      @id @default(autoincrement())
+  email     String
+  token     String   @unique
+  expiresAt DateTime
+
+  userId Int
+  user   User @relation(fields: [userId], references: [id])
+}
+
+model PasswordResetToken {
+  id             Int      @id @default(autoincrement())
+  email          String
+  token          String   @unique
+  hashedPassword String
+  expiresAt      DateTime
+  isUsed         Boolean  @default(false) // <-- new field to track usage
+  userId         Int
+  user           User     @relation(fields: [userId], references: [id])
+}
+
+model Room {
+  id            Int      @id @default(autoincrement())
+  titles        String
+  name          String
+  courseName    String
+  courseCode    String
+  accessKey     String
+  supervisorKey String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+
+  creator   User? @relation("RoomsCreatedByUser", fields: [creatorId], references: [id])
+  creatorId Int?
+
+  joinedBy    JoinedRoom[]
+  supervisors SupervisedRoom[]
+  bubbles     Bubble[]
+  messages    Message[]        @relation("RoomMessages")
+}
+
+model JoinedRoom {
+  id        Int  @id @default(autoincrement())
+  student   User @relation(fields: [studentId], references: [id])
+  studentId Int
+
+  room   Room @relation(fields: [roomId], references: [id])
+  roomId Int
+
+  joinedAt DateTime @default(now())
+
+  @@unique([studentId, roomId])
+}
+
+model SupervisedRoom {
+  id           Int  @id @default(autoincrement())
+  supervisor   User @relation(fields: [supervisorId], references: [id])
+  supervisorId Int
+
+  room   Room @relation(fields: [roomId], references: [id])
+  roomId Int
+
+  createdAt DateTime @default(now())
+
+  @@unique([supervisorId, roomId]) 
+}
+
+model OnlineStatus {
+  id             Int           @id @default(autoincrement())
+  userId         Int           @unique
+  isOnline       Boolean
+
+  user User @relation(fields: [userId], references: [id])
+}
+
+model Bubble {
+  id              Int            @id @default(autoincrement())
+  name            String
+  roomId          Int
+  room            Room           @relation(fields: [roomId], references: [id], onDelete: Cascade)
+  students        User[]         @relation("BubbleStudents")
+  supervisors     User[]         @relation("BubbleSupervisors")
+  messages        Message[]      @relation("BubbleMessages")
+
+ 
+  stacks          Stack[]       @relation 
+  files           File[]
+}
+
+
+model Message {
+  id        Int      @id @default(autoincrement())
+  text      String
+  timestamp DateTime @default(now())
+
+  // Sender
+  senderId Int
+  sender   User @relation("UserMessages", fields: [senderId], references: [id])
+
+  // Optional scope: Room or Bubble
+  roomId Int?
+  room   Room? @relation("RoomMessages", fields: [roomId], references: [id])
+
+  bubbleId Int?
+  bubble   Bubble? @relation("BubbleMessages", fields: [bubbleId], references: [id])
+}
+
+model Stack {
+  id         Int      @id @default(autoincrement())
+  name       String
+  bubbleId   Int     
+  bubble     Bubble   @relation(fields: [bubbleId], references: [id], onDelete: Cascade)
+  folders    Folder[] @relation
+
+  createdAt  DateTime @default(now())
+  activityLogs ActivityLog[]
+
+}
+
+
+
+
+model Folder {
+  id               Int            @id @default(autoincrement())
+  name             String
+  stackId          Int      
+  stack            Stack          @relation(fields: [stackId], references: [id], onDelete: Cascade)
+  parentId         Int?
+  parent           Folder?        @relation("FolderParent", fields: [parentId], references: [id])
+  children         Folder[]       @relation("FolderParent")
+  files            File[]
+  createdAt        DateTime       @default(now())
+
+  creatorId        Int?
+  creator          User?          @relation("UserCreatedFolders", fields: [creatorId], references: [id])
+  activityLogs ActivityLog[]
+
+}
+
+
+
+
+model File {
+  id               Int                @id @default(autoincrement())
+  name             String
+  folderId         Int
+  folder           Folder             @relation(fields: [folderId], references: [id], onDelete: Cascade)
+  creatorId        Int
+  creator          User               @relation("CreatorFiles", fields: [creatorId], references: [id])
+
+  isLocked         Boolean            @default(false)
+  filePath         String
+  accessRequests   AccessRequest[]
+  createdAt        DateTime           @default(now())
+  updatedAt        DateTime           @updatedAt
+
+  bubbleId         Int
+  bubble           Bubble             @relation(fields: [bubbleId], references: [id], onDelete: Cascade)
+  content          String?            @db.Text
+
+}
+
+model AccessRequest {
+  id          Int      @id @default(autoincrement())
+  fileId      Int
+  requesterId Int
+  status      String // 'pending', 'approved', 'denied'
+  createdAt   DateTime @default(now())
+
+  file      File @relation(fields: [fileId], references: [id], onDelete: Cascade)
+  requester User @relation("UserAccessRequests", fields: [requesterId], references: [id])
+}
+model ActivityLog {
+  id        Int      @id @default(autoincrement())
+
+  userId    Int
+  user      User     @relation(fields: [userId], references: [id])
+
+  stackId   Int
+  stack     Stack    @relation(fields: [stackId], references: [id])
+
+  folderId  Int?     
+  folder    Folder?  @relation(fields: [folderId], references: [id])
+
+  action    String   
+  timestamp DateTime @default(now())
+
+  @@index([stackId])
+  @@index([folderId])
+  @@index([userId])
+}
+

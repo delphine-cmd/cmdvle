@@ -1,0 +1,202 @@
+.bubble-room-screen {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  font-family: sans-serif;
+  background-color: white;
+}
+
+.virtual-room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2vw;
+  padding-top: 20px;
+  background: white;
+  border-bottom: 4px solid #003366;
+  white-space: nowrap;
+  overflow: hidden;
+  flex-wrap: wrap;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+/* Header Title */
+.room-header-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #003366;
+}
+
+
+
+
+  .header-right {
+  display: flex;
+  align-items: center; /* ✅ This aligns buttons vertically */
+  gap: 8px;
+}
+
+
+
+
+/* Layout */
+.bubble-room-main {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+.bubble-members-sidebar {
+  width: 250px;
+  border-right: 3px solid #002a75;
+  padding: 20px;
+  background-color: #f9f9f9;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  height: calc(100vh - 100px);
+}
+
+.bubble-members-sidebar h4 {
+  font-size: 20px;
+  font-weight: bold;
+  color: #163976;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.bubble-members-sidebar ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex: 1;
+  overflow-y: auto;
+}
+
+.bubble-members-sidebar li {
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #333;
+}
+
+.home-btn {
+  .home-btn {
+  background: white;
+  color: #003366;
+  border: 2px solid white;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: none;
+  
+}
+
+
+}
+
+.exit-btn{
+background: white;
+  color: #003366;
+  border: 2px solid white;
+  padding: 10px 12px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: none;
+}
+
+.exit-btn:hover,
+.home-btn:hover {
+  background-color: #ffffff !important;
+  color: #002a75 !important;
+  box-shadow: none !important;
+  border: none !important;
+  text-decoration: none !important;
+}
+
+
+.tool-icon {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 600;
+  background: #eaf1ff;
+  padding: 10px 16px;
+  border-radius: 8px;
+  color: #002a75;
+  font-size: 14px;
+  white-space: nowrap;
+  cursor: default;
+  transition: background 0.3s ease;
+}
+
+.tool-icon:hover {
+  background: #dbe7ff;
+}
+
+.more-icon {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+}
+
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+  .virtual-room-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .header-left,
+  .header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .room-header-title {
+    font-size: clamp(14px, 6vw, 20px);
+    text-align: center;
+    margin: 0.5rem 0;
+  }
+
+  .exit-btn,
+  .home-btn {
+    width: fit-content;
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .room-header-title {
+    font-size: 14px;
+  }
+
+  .exit-btn,
+  .home-btn {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+}

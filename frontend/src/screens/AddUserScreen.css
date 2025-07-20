@@ -1,0 +1,327 @@
+
+* {
+  box-sizing: border-box;
+}
+
+.add-user-container {
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 30px;
+  position: relative;
+  min-height: 100vh;
+  background: #f9f9f9;
+}
+
+/* Header */
+.add-user-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  margin: 2px;
+  margin-left: 0px;
+  background: white;
+  border-bottom: 4px solid #003366;
+}
+
+.header-logo {
+  height: 100px;
+  width: 110px;
+  margin-right: 0px;
+  margin-left: 25px;
+  margin-bottom: -5px;
+ 
+}
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+
+.header-title {
+  font-size: 65px;
+  color: #003366;
+  margin: 0;
+  font-weight: 400px;
+  margin-bottom: -20px;
+  width: fit-content;
+  flex-grow: 1;
+  text-align: center;
+  margin-right: 45px;
+}
+
+/* Updated Logout Button */
+.logout-btn {
+  background: white;
+  color: #003366;
+  border: 2px solid white;
+  margin-bottom: -70px;
+  margin-right: 50px;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  width: fit-content;
+}
+
+/* Admin email display */
+.admin-info {
+  padding: 10px 30px;
+  font-size: 26px;
+  color: #003366;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Form Box */
+.add-user-form {
+  background: white;
+  max-width: 55%;
+  width: 50%;
+  margin: 0 auto;
+  padding: 55px;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Form Title */
+.add-user-form h2 {
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 5px;
+}
+
+/* Role Select */
+.role-select {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  height: 40px;
+}
+/* Full Name Input */
+.name-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* Student ID Input */
+.student-id-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+
+/* Email Input */
+.email-input {
+   width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* Password Input */
+.password-input {
+   width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* Confirm Password Input */
+.confirm-password-input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+/* Password toggle */
+.password-wrapper {
+  position: relative;
+  width: 100%;
+  margin-bottom: 15px;
+}
+
+.toggle-password {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 18px;
+  color: #003366;
+}
+
+
+/* Submit Button */
+.add-user-form button[type="submit"] {
+  width: 100%;
+  background-color: #003366;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+/* Feedback message */
+.message {
+  margin-top: 15px;
+  color: green;
+  text-align: center;
+}
+
+/* Floating More Icon */
+.bottom-left-icon {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  width: fit-content;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+@media (max-width: 1024px) {
+  .header-title {
+    font-size: 40px;
+    margin-right: 0;
+  }
+
+  .admin-info {
+    font-size: 20px;
+    padding: 10px 20px;
+  }
+
+  .add-user-form {
+    max-width: 80%;
+    padding: 30px;
+  }
+}
+
+@media (max-width: 768px) {
+  .add-user-header {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 15px;
+  }
+
+  .header-left {
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .header-logo {
+    height: 70px;
+    width: auto;
+    margin: 0;
+  }
+
+  .header-title {
+    font-size: 28px;
+    text-align: left;
+    margin: 0;
+  }
+
+  .logout-btn {
+    font-size: 16px;
+    padding: 8px 12px;
+    margin: 0;
+    align-self: flex-end;
+  }
+
+  .admin-info {
+    font-size: 18px;
+    padding: 10px 15px;
+  }
+
+  .add-user-form {
+    width: 90%;
+    padding: 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-title {
+    font-size: 20px;
+  }
+
+  .admin-info {
+    font-size: 16px;
+  }
+
+  .add-user-form {
+    width: 95%;
+    padding: 20px;
+  }
+
+  .add-user-form button[type="submit"] {
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  .role-select,
+  .email-input,
+  .password-input,
+  .confirm-password-input {
+    font-size: 14px;
+    padding: 10px;
+  
+  
+  }
+
+  .bottom-left-icon {
+    padding: 10px;
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 320px) {
+  .header-title {
+    font-size: 16px;
+  }
+
+  .logout-btn {
+    font-size: 14px;
+  }
+
+  .admin-info {
+    font-size: 14px;
+  }
+
+  .add-user-form {
+    padding: 15px;
+  }
+}
+

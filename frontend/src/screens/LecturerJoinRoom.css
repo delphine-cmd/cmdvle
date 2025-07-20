@@ -1,0 +1,385 @@
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 24px;
+  background-color: white;
+  border-bottom: 1px solid #ddd;
+  flex-wrap: nowrap; /* no wrap */
+  overflow: hidden;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+  flex-shrink: 1;
+}
+
+.header-logo {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+.header-title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: #003366;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+/* Buttons */
+.btn-primary {
+  width:20%;
+  background-color: #003366;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.logout-btn {
+  background: white;
+  color: #003366;
+  border: 0px solid white;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0px;
+  width: fit-content;
+}
+.home-btn{
+  background: white;
+  color: #003366;
+  border: 2px solid white;
+  padding: 8px 14px;
+  border-radius: 4px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  gap: 0px;
+  margin-bottom: -70px;
+
+  
+}
+
+.logout-btn:hover {
+  background-color: #003366;
+}
+
+.home-btn:hover {
+ background-color: #003366;
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0px;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.4);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.modal-content {
+  background: white;
+  padding: 30px;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+}
+
+.btn-outline {
+  background: white;
+  border: 2px solid #003366;
+  color: #003366;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.btn-outline:hover {
+  background-color: #003366;
+  color: white;
+}
+.room-button-group {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.create-room-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #003366;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.create-room-btn:hover {
+  background-color: #005f99;
+}
+
+.cancel-room-btn {
+  flex: 1;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: bold;
+  background-color: #ddd;
+  color: #333;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.cancel-room-btn:hover {
+  background-color: #bbb;
+}
+
+.room-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  max-width: 600px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.room-card h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #003366;
+  margin-left: 17px;
+}
+
+.room-card p {
+  margin: 4px 0;
+  font-size: 15px;
+  color: #333;
+  margin-left: 17px;
+}
+
+.room-card p strong {
+  color: #555;
+}
+
+.btn-edit {
+  background-color: #003366;
+  color: white;
+  padding: 8px 14px;
+  border: none;
+  border-radius: 6px;
+  width: 190px;
+  margin-right: 50px;
+  margin-left: 15px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-edit:hover {
+  background-color: #004c99;
+}
+
+.btn-delete {
+  background-color: #cc0000;
+  color: white;
+  padding: 8px 14px;
+  width: 190px;
+  border: none;
+  border-radius: 6px;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.btn-delete:hover {
+  background-color: #990000;
+}
+
+
+
+/* === Extra Small Devices: Smartwatches (≤ 320px) === */
+@media (max-width: 320px) {
+  .header-logo {
+    width: 28px;
+    height: 28px;
+  }
+
+  .header-title {
+    font-size: 1rem;
+  }
+
+  .home-btn,
+  .logout-btn {
+    font-size: 10px;
+    padding: 4px 6px;
+  }
+  .floating-more-button {
+  position: fixed;
+  bottom: 20px;
+  left: 50px;
+  z-index: 1000;
+}
+
+}
+
+/* === Small Phones (321px – 480px) === */
+@media (max-width: 480px) {
+  .header-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .header-title {
+    font-size: 1.2rem;
+  }
+
+  .header-right {
+    gap: 6px;
+  }
+
+  .home-btn,
+  .logout-btn {
+    font-size: 12px;
+    padding: 6px 8px;
+  }
+
+  .btn-primary {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+/* === Medium Phones / Big Phones (481px – 768px) === */
+@media (max-width: 768px) {
+  .header-logo {
+    width: 36px;
+    height: 36px;
+  }
+
+  .header-title {
+    font-size: 1.4rem;
+  }
+
+  .home-btn,
+  .logout-btn {
+    font-size: 14px;
+    padding: 8px 10px;
+  }
+
+  .btn-primary {
+    width: 60%;
+    font-size: 14px;
+  }
+}
+
+/* === Tablets / iPads (769px – 1024px) === */
+@media (max-width: 1024px) {
+  .header-logo {
+    width: 42px;
+    height: 42px;
+  }
+
+  .header-title {
+    font-size: 1.6rem;
+  }
+
+  .home-btn,
+  .logout-btn {
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+
+  .btn-primary {
+    width: 40%;
+    font-size: 15px;
+  }
+}
+
+/* === Small Laptops (1025px – 1366px) === */
+@media (max-width: 1366px) {
+  .header-logo {
+    width: 46px;
+    height: 46px;
+  }
+
+  .header-title {
+    font-size: 1.8rem;
+  }
+
+  .home-btn,
+  .logout-btn {
+    font-size: 16px;
+    padding: 10px 14px;
+  }
+
+  .btn-primary {
+    width: 30%;
+    font-size: 16px;
+  }
+}
+
+/* === Large Laptops / Desktops (1367px – 1600px) === */
+@media (max-width: 1600px) {
+  .header-logo {
+    width: 50px;
+    height: 50px;
+  }
+
+  .header-title {
+    font-size: 2rem;
+  }
+
+  .btn-primary {
+    width: 25%;
+  }
+}
+
+/* === Extra Large Screens (1601px – 1920px+) === */
+@media (min-width: 1601px) {
+  .header-logo {
+    width: 60px;
+    height: 60px;
+  }
+
+  .header-title {
+    font-size: 2.3rem;
+  }
+
+  .btn-primary {
+    width: 20%;
+    font-size: 18px;
+  }
+}

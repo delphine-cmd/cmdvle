@@ -1,0 +1,13 @@
+node_modules
+# Keep environment variables out of version control
+.env
+
+# Ignore Prisma generated files
+/generated/prisma
+
+# 🔐 Ignore sensitive key and cert files
+*.pem
+*.key
+certs/
+firebaseKey.json
+

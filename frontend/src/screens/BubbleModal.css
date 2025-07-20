@@ -1,0 +1,75 @@
+/* BubbleModal.css */
+.bubble-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 5, 0.7); /* Dimmed background */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.bubble-modal {
+  background-color: #f4f1f1;
+  padding: 24px;
+  border-radius: 12px;
+  width: 90%;
+  max-width: 500px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+  z-index: 1000;
+}
+
+.modal-section {
+  margin-top: 20px;
+}
+
+.participant-row {
+  padding: 6px 0;
+  border-bottom: 1px solid #c2d3e4;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 24px;
+}
+
+.assign-btn {
+  background-color: #003366;
+  color: white;
+  width: 45%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+.cancel-btn {
+   width: 45%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+.bubble-card {
+  background-color: #ffffff;
+  border: 1px solid #dddddd;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 18px rgba(83, 79, 185, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  cursor: pointer;
+}
+
+.bubble-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 36px rgba(52, 88, 220, 0.2);  /* 💥 Big, soft shadow */
+}
+
+

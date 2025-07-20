@@ -1,0 +1,240 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.bubble-list-container {
+  font-family: Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  margin-bottom: 30px;
+  position: relative;
+  min-height: 100vh;
+  padding: 24px;
+  display: grid;
+  gap: 16px;
+  background: #e2e5e9;
+}
+
+
+
+/* Header container */
+.virtual-room-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 30px;
+  margin: 2px;
+  margin-left: 0px;
+  background: white;
+  border-bottom: 4px solid #003366; 
+}
+
+
+/* Left side (course title) */
+.header-left .room-header-title {
+  font-size: 65px;
+  color: #003366;
+  margin: 0;
+  font-weight: 400px;
+  margin-bottom: -20px;
+  width: fit-content;
+  flex-grow: 1;
+  text-align: left;
+  margin-right: 45px;
+}
+
+/* Right side (exit button wrapper) */
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Bubble cards */
+.bubble-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  padding: 20px;
+  padding-top: 10px;
+  margin-bottom: 20px;
+  width: 70%;
+  margin-left: 15%;
+  height: max-content;
+  position: relative;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+.bubble-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.2);  /* 💥 Big, soft shadow */
+}
+
+.bubble-card h3 {
+  margin: 0 0 10px;
+  font-size: 20px;
+  color: #003366;
+  margin-left: 6px;
+}
+
+.bubble-section {
+  margin-top: 1px;
+}
+
+.bubble-section ul {
+  margin: 4px 0;
+  font-size: 15px;
+  color: #333;
+  margin-left: 17px;
+}
+
+.no-bubbles-msg {
+  padding: 20px;
+  font-style: italic;
+  color: gray;
+}
+
+
+.bubble-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.edit-bubble-btn {
+  padding: 6px 12px;
+  font-size: 14px;
+  background-color: #002a75;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: fit-content;
+margin-bottom: 15px;
+}
+
+.edit-bubble-btn:hover {
+  background-color: #001d52;
+}
+
+.student-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 8px;
+}
+
+
+.student-table td {
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 14px;
+  gap: 10px;
+}
+
+.student-table th{
+padding: 8px 12px;
+  border: 1px solid #ddd;
+  text-align: center;
+  font-size: 14px;
+  background-color: #f0f2f5;
+  font-weight: 600;
+
+}
+
+.supervisor-list {
+  list-style-type: none;
+  padding-left: 0;
+  margin-top: 8px;
+}
+
+.supervisor-item {
+  margin-bottom: 8px;
+  padding: 8px 12px;
+  background-color: #f7f9fc;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+}
+
+.supervisor-name {
+  font-weight: 600;
+  color: #002a75;
+}
+
+.supervisor-email {
+  font-size: 13px;
+  color: #555;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 24px;
+  border-radius: 8px;
+  width: 400px;
+  max-width: 90%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.modal-actions button {
+  margin-left: 10px;
+}
+.modal select {
+  width: 100%;
+  height: 40px;
+  padding: 10px 12px;
+  font-size: 16px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+}
+
+.modal select option:first-child {
+  color: #888; /* faded placeholder style */
+}
+
+.download-excel-wrapper {
+  text-align: right;
+  margin-bottom: 12px;
+ padding-right: 10px;
+}
+
+.download-excel-btn {
+  background-color: #003366;
+  color: white;
+  border: none;
+  padding: px 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  max-width: fit-content;
+}
+
+.download-excel-btn:hover {
+  background-color: #003366;
+}
+
+
+
